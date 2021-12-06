@@ -13,6 +13,9 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import java.io.*;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -74,7 +77,14 @@ public class Main {
             String formattedCode = new Formatter().formatSource(finalCode);
             Files.write(Paths.get("Webshell.java"), formattedCode.getBytes(StandardCharsets.UTF_8));
 
-            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+            File toolsPath = new File(
+                    System.getProperty("java.home").replace("jre","lib") +
+                            java.io.File.separator + "tools.jar");
+            URL url = toolsPath.toURI().toURL();
+            URLClassLoader classLoader = new URLClassLoader(new java.net.URL[]{url});
+            Class<?> toolClazz = classLoader.loadClass("javax.tools.ToolProvider");
+            Method method = toolClazz.getMethod("getSystemJavaCompiler");
+            JavaCompiler compiler = (JavaCompiler) method.invoke(null);
             StandardJavaFileManager fileManager = compiler.getStandardFileManager(
                     null, null, null);
             Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjects(
