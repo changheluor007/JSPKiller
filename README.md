@@ -24,5 +24,4 @@
 1. `JSPKiller.jar`目录下必须有`lib.jar`文件
 2. 测试的三种反射JSP马已经提供（在JSP目录下）
 3. 确保配置了正确的环境变量`JAVA_HOME`
-4. 确保`java`命令是`JDK`下的而不是`JRE`下的（例如环境变量`Path`中配置`C:\Program Files\Java\jdk1.8.0_131\bin`为第一个）
-5. 第4条另一种解决方案是把`JDK/lib/tools.jar`复制到`JDK/jre/lib`和`JRE/lib`中
+4. 确保`java`命令是`JDK`下的而不是`JRE`下的（例如环境变量`Path`中配置`C:\Program Files\Java\jdk1.8.0_131\bin`为第一个）这样做的原因是：在`JRE`环境中无法获得编译器对象（JavaCompiler）来进行动态编译，只有`JDK`有这样的功能
