@@ -20,6 +20,8 @@
 
 `java -jar JSPKiller.jar -f 1.jsp`
 
+如果发生空指针异常或编译报错，参考以下
+
 注意：
 1. `JSPKiller.jar`目录下必须有`lib.jar`文件
 2. 测试的三种反射JSP马已经提供（在JSP目录下）
