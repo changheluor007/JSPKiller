@@ -23,4 +23,4 @@
 注意：
 1. `JSPKiller.jar`目录下必须有`lib.jar`文件
 2. 测试的三种反射JSP马已经提供（在JSP目录下）
-3. 如果立即退出无法检测，请将`JDK/lib/tools.jar`放入`JDK/jre/lib和JRE/lib/`下（例如`C:\Program Files\Java\jdk1.8.0_131\lib\tool.jar`复制到`C:\Program Files\Java\jdk1.8.0_131\jre\lib`和`C:\Program Files\Java\jre1.8.0_131\lib`）
+3. 确保配置了正确的环境变量`JAVA_HOME`
