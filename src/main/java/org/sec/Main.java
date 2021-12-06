@@ -80,7 +80,7 @@ public class Main {
 
             File toolsPath = new File(
                     System.getProperty("java.home")
-                            .replace("jre","lib") +
+                            .replace("jre", "lib") +
                             File.separator + "tools.jar");
             URL url = toolsPath.toURI().toURL();
             URLClassLoader classLoader = new URLClassLoader(new java.net.URL[]{url});
@@ -103,9 +103,13 @@ public class Main {
             Files.delete(Paths.get("Webshell.class"));
             Files.delete(Paths.get("Webshell.java"));
 
-            ClassReader cr = new ClassReader(classData);
-            ReflectionShellClassVisitor cv = new ReflectionShellClassVisitor();
-            cr.accept(cv, ClassReader.EXPAND_FRAMES);
+            try {
+                ClassReader cr = new ClassReader(classData);
+                ReflectionShellClassVisitor cv = new ReflectionShellClassVisitor();
+                cr.accept(cv, ClassReader.EXPAND_FRAMES);
+            } catch (Exception e) {
+                logger.info("no reflection webshell");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
