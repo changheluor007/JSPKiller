@@ -95,7 +95,6 @@ public class Main {
             ReflectionShellClassVisitor cv = new ReflectionShellClassVisitor();
             cr.accept(cv, ClassReader.EXPAND_FRAMES);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
