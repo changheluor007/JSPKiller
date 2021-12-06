@@ -24,3 +24,4 @@
 1. `JSPKiller.jar`目录下必须有`lib.jar`文件
 2. 测试的三种反射JSP马已经提供（在JSP目录下）
 3. 确保配置了正确的环境变量`JAVA_HOME`
+4. 确保环境变量`java`命令是`JDK`下的而不是`JRE`下的

@@ -13,6 +13,7 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import java.io.*;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -78,12 +79,13 @@ public class Main {
             Files.write(Paths.get("Webshell.java"), formattedCode.getBytes(StandardCharsets.UTF_8));
 
             File toolsPath = new File(
-                    System.getProperty("java.home").replace("jre","lib") +
-                            java.io.File.separator + "tools.jar");
+                    System.getProperty("java.home")
+                            .replace("jre","lib") +
+                            File.separator + "tools.jar");
             URL url = toolsPath.toURI().toURL();
             URLClassLoader classLoader = new URLClassLoader(new java.net.URL[]{url});
             Class<?> toolClazz = classLoader.loadClass("javax.tools.ToolProvider");
-            Method method = toolClazz.getMethod("getSystemJavaCompiler");
+            Method method = toolClazz.getDeclaredMethod("getSystemJavaCompiler");
             JavaCompiler compiler = (JavaCompiler) method.invoke(null);
             StandardJavaFileManager fileManager = compiler.getStandardFileManager(
                     null, null, null);
@@ -105,6 +107,7 @@ public class Main {
             ReflectionShellClassVisitor cv = new ReflectionShellClassVisitor();
             cr.accept(cv, ClassReader.EXPAND_FRAMES);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
